@@ -12,6 +12,7 @@ import sendEmail from "@/utils/sendEmail"
 export default function Home() {
   const [ userLocation, setUserLocation ] = useState<string>("")
   const [ userName, setUserName ] = useState<string>("")
+  const [ email, setEmail ] = useState<string>("")
   const [ suggestedOffers, setSuggestedOffers ] = useState<Array<string>>([])
 
   useEffect(() => {
@@ -36,9 +37,9 @@ export default function Home() {
         <div className="flex flex-col items-center w-full h-full">
           <h1 className="text-4xl font-bold my-8"> Find the best Offer!</h1>
           {suggestedOffers.length > 0 ?
-            <Offers offers={suggestedOffers}/>
+            <Offers offers={suggestedOffers} sendEmail={sendEmail} userName={userName} email={email}/>
             :
-            <Input locations={countries} setUserLocation={setUserLocation} setUserName={setUserName}/>
+            <Input locations={countries} setUserLocation={setUserLocation} setUserName={setUserName} setEmail={setEmail}/>
           }
         </div>
       </div>
