@@ -3,9 +3,10 @@ import React, { FC, useState } from 'react';
 
 interface OffersProps {
   offers: Array<string>
+  sendEmail: () => void
 }
 
-const Offers: FC<OffersProps> = ({offers}) => {
+const Offers: FC<OffersProps> = ({offers, sendEmail}) => {
 
 
   return (
@@ -13,7 +14,7 @@ const Offers: FC<OffersProps> = ({offers}) => {
       {offers.map((offer) => {
         return (<h1> {offer} </h1>)
       })}
-      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+      <button onClick={sendEmail} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
         Send me an Email
       </button>
     </div>
