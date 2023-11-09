@@ -1,19 +1,19 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState } from "react";
 
 interface InputProps {
   locations: Array<string>;
-  setUserLocation: React.Dispatch<React.SetStateAction<string>>,
-  setUserName: React.Dispatch<React.SetStateAction<string>>
+  setUserLocation: React.Dispatch<React.SetStateAction<string>>;
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName }) => {
-  const [userName, setUserNameInitial] = useState<string>('')
-  const [selectedCountry, setSelectedCountry] = useState<string>('')
+  const [userName, setUserNameInitial] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setUserLocation(selectedCountry);
-    setUserName(userName)
+    setUserName(userName);
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +25,10 @@ const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+    <form
+      onSubmit={handleSubmit}
+      className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
+    >
       <div className="flex flex-col overflow-y-auto md:flex-row">
         <input
           type="text"
@@ -48,7 +51,10 @@ const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName }) => {
           ))}
         </select>
 
-        <button type="submit" className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+        <button
+          type="submit"
+          className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple md:mt-2 mb-2"
+        >
           Submit
         </button>
       </div>
