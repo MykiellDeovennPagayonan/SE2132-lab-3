@@ -3,16 +3,19 @@ import React, { FC, useState } from 'react';
 interface InputProps {
   locations: Array<string>;
   setUserLocation: React.Dispatch<React.SetStateAction<string>>,
-  setUserName: React.Dispatch<React.SetStateAction<string>>
+  setUserName: React.Dispatch<React.SetStateAction<string>>,
+  setEmail: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName }) => {
+const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName, setEmail }) => {
   const [userName, setUserNameInitial] = useState<string>('')
+  const [emailInitial, setEmailInitial] = useState<string>('')
   const [selectedCountry, setSelectedCountry] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setUserLocation(selectedCountry);
+    setEmail(emailInitial)
     setUserName(userName)
   };
 
@@ -20,18 +23,30 @@ const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName }) => {
     setUserNameInitial(e.target.value);
   };
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailInitial(e.target.value);
+  };
+
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(e.target.value);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+    <form onSubmit={handleSubmit} className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800 px-16">
       <div className="flex flex-col overflow-y-auto md:flex-row">
         <input
           type="text"
           placeholder="Enter your name"
           value={userName}
           onChange={handleNameChange}
+          className="p-2 m-2 border border-gray-400 rounded placeholder-gray-600 text-gray-600"
+        />
+
+        <input
+          type="text"
+          placeholder="Enter your email"
+          value={emailInitial}
+          onChange={handleEmailChange}
           className="p-2 m-2 border border-gray-400 rounded placeholder-gray-600 text-gray-600"
         />
 

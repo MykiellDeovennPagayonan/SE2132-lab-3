@@ -1,15 +1,13 @@
 import emailjs from 'emailjs-com'
 
-export default function sendEmail() {
+export default function sendEmail(offers : Array<string>, email : string, userName : string) {
+  const offer = offers.join(", ")
   const params = {
-    to_email: 'bsseclassbatchzera@gmail.com',
+    to_email: email,
     from_name: "Your Special Friend",
-    to_name: "YOU YOU YOU",
-    offer: "brugers",
-    message: 'This is a test email sent using emailjs'
+    to_name: userName,
+    offer: offer,
   }
-  
-  emailjs.init("ba3gxSiNTiWXx3fGF")
   
   emailjs.send('service_8wyybff', 'template_8l4lsap', params)
     .then((response) => {
