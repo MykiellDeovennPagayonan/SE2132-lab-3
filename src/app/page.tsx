@@ -6,12 +6,17 @@ import Offers from "@/components/offers"
 import countries from "@/utils/locations"
 import lookupCountryCode from "@/utils/codeCountriesMap"
 import findOffers from "@/utils/findOffers"
-
+import emailjs from 'emailjs-com'
+import sendEmail from "@/utils/sendEmail"
 
 export default function Home() {
   const [ userLocation, setUserLocation ] = useState<string>("")
   const [ userName, setUserName ] = useState<string>("")
   const [ suggestedOffers, setSuggestedOffers ] = useState<Array<string>>([])
+
+  useEffect(() => {
+    emailjs.init("ba3gxSiNTiWXx3fGF")
+  }, [])
 
   useEffect(() => {
     const countryCode : string = lookupCountryCode(userLocation)
