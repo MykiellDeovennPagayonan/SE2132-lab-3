@@ -32,8 +32,8 @@ const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName, setEma
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800 px-16">
-      <div className="flex flex-col overflow-y-auto md:flex-row">
+    <form onSubmit={handleSubmit} className="flex flex-col h-full w-full mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800 px-16">
+      <div className="flex flex-col overflow-y-auto">
         <input
           type="text"
           placeholder="Enter your name"
@@ -41,7 +41,6 @@ const Input: FC<InputProps> = ({ locations, setUserLocation, setUserName, setEma
           onChange={handleNameChange}
           className="p-2 m-2 border border-gray-400 rounded placeholder-gray-600 text-gray-600"
         />
-
         <input
           type="text"
           placeholder="Enter your email"
