@@ -2,7 +2,7 @@ interface Offer {
   code: string;
   name: string;
   value: String;
-  id: string
+  id: string;
 }
 
 async function fetchData() {
@@ -21,14 +21,14 @@ async function fetchData() {
   }
 }
 
-function getOffersWithCode(data : Array<Offer>, code : string) {
-  return data.filter(item => item.code === code).map(item => item.name);
+function getOffersWithCode(data: Array<Offer>, code: string) {
+  return data.filter((item) => item.code === code).map((item) => item.name);
 }
 
-export default async function findOffers(codeToSearch : string) {
+export default async function findOffers(codeToSearch: string) {
   try {
     const data = await fetchData();
-    console.log(data)
+    console.log(data);
     const namesWithCode = getOffersWithCode(data, codeToSearch);
     return namesWithCode;
   } catch (error) {
